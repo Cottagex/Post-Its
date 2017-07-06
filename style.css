@@ -1,3 +1,18 @@
-h1 {
-    color: red;
+
+#preview {
+    max-height: 500px;
+    max-width: 400px;
+    border: 2px solid black;
+    float: right;
+    margin: 50px 50px 0 0;
+}
+
+#preview img {
+    max-width: 400px;
+    max-height: 400px;
+}
+
+.description {
+    width: 400px;
+    height: 150px;
 }
