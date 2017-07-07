@@ -1,5 +1,4 @@
 
-
 // Reads the image URL and updates the preview box to the right
 // of the page to show the image
 function readImageURL(input) {
@@ -33,3 +32,18 @@ $(document).ready(function() {
     updateUserDescription();
     updateUserURL();
 })
+
+
+
+
+/*-----------------------------------------------------------------
+------------        EXPERIMENTAL FACEBOOK TESTS         -----------
+-----------------------------------------------------------------*/
+FB.getLoginStatus(function(response) {
+    if (response.status === 'connected') {
+        console.log('Logged in');
+    }
+    else {
+        FB.login();
+    }
+});
