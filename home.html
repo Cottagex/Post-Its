@@ -1,5 +1,6 @@
 <html>
     <head>
+        <title>Post-Ums!</title>
         <link href="style.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="appPosts.js"></script>
@@ -7,26 +8,42 @@
 
     <body class="content">
         <!-- FACEBOOK SDK -->
+        <div id="fb-root"></div>
     <script>
         window.fbAsyncInit = function() {
             FB.init({
-            appId            : '1700142820294035',
-            autoLogAppEvents : true,
-            xfbml            : true,
-            version          : 'v2.9'
+            appId      : '1700142820294035',
+            xfbml      : true,
+            version    : 'v2.9'
             });
-            FB.AppEvents.logPageView();
-        };
+        FB.AppEvents.logPageView();
 
-        (function(d, s, id){
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) {return;}
-            js = d.createElement(s); js.id = id;
-            js.src = "//connect.facebook.net/en_US/sdk.js";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
+        // testing stuffs
+        FB.getLoginStatus(function(response) {
+            console.log(response.status);
+            statusChangeCallback(response);
+        });
+    };
+
+    
+    (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+     js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
+    fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    /*
+    (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+    */
     </script>
-        <!-- End FB SDK -->
+        <!-- END FACEBOOK SDK -->
 
         <div id="preview">
             <img id="user-img" src="#" alt="your image">
@@ -34,6 +51,7 @@
             <p id="preview-url"><p>
         </div>
 
+        <div class="fb-login-button" data-width="300" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
         <input type="file" onchange="readImageURL(this);">
         <p>Description:</p>
         <textarea class="description" placeholder="Description"></textarea>
@@ -42,9 +60,6 @@
         <!--
             EXPERIMENTAL FACEBOOK TESTS
         -->
-        <button class="fb">Facebook</button>
-        <!--
-
-        -->    
+        <button class="fb">Facebook</button>    
     </body>
 </html>
