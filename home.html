@@ -13,35 +13,35 @@
         window.fbAsyncInit = function() {
             FB.init({
             appId      : '1700142820294035',
+            cookie     : true,
             xfbml      : true,
             version    : 'v2.9'
-            });
+        });
+        
+        // This function is to log events that users of your webpage do
+        // and gives that data to FB
         FB.AppEvents.logPageView();
 
-        // testing stuffs
+        // Tests
         FB.getLoginStatus(function(response) {
-            console.log(response.status);
-            statusChangeCallback(response);
-        });
+            if (response.status === 'connected') {
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                console.log('user id: ' + uid);
+                console.log('Access Token: ' + accessToken);
+            } else {
+                console.log('Error getLoginStatus()');
+            }
+        })
     };
 
-    
     (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
-    fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    /*
-    (function(d, s, id){
         var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) {return;}
+        if (d.getElementById(id)) return;
         js = d.createElement(s); js.id = id;
-        js.src = "//connect.facebook.net/en_US/all.js";
+        js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.9";
         fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-    */
     </script>
         <!-- END FACEBOOK SDK -->
 
@@ -51,15 +51,15 @@
             <p id="preview-url"><p>
         </div>
 
-        <div class="fb-login-button" data-width="300" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
         <input type="file" onchange="readImageURL(this);">
         <p>Description:</p>
         <textarea class="description" placeholder="Description"></textarea>
         <p>URL: <input type="url" class="site-url"></p>
 
-        <!--
-            EXPERIMENTAL FACEBOOK TESTS
-        -->
-        <button class="fb">Facebook</button>    
+
+        <button class="login-status" onclick="getLoginStatus()">Check Login Status</button>
+        <button class="post-to-fb">Post to FB</button>    
     </body>
 </html>
+
+ <!-- <div class="fb-login-button" data-width="300" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div> -->
