@@ -1,20 +1,32 @@
 <html>
     <head>
+        <link href="reset.css" rel="stylesheet">
         <link href="style.css" rel="stylesheet">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="appPosts.js"></script>
     </head>
 
-    <body class="content">
-        <div id="preview">
-            <img id="user-img" src="#" alt="your image">
-            <pre id="user-description"></pre>
-            <p id="preview-url"><p>
+    <body class="container">
+        <div id="extra-bg">
+            <div class="content">
+                <div id="preview">
+                    <img id="user-img" src="#" alt="your image">
+                    <p id="user-description"></p>
+                    <p id="preview-url"><p>
+                </div>
+                
+                <div id="social-media-post">
+                    <div class="media-input-box">
+                        <div id="description-box">
+                            <p>Description</p>
+                            <textarea class="description"></textarea>
+                        </div>
+                        <p>URL: <input type="url" class="site-url"></p>
+                        <input type="file" onchange="readImageURL(this);">
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <input type="file" onchange="readImageURL(this);">
-        <p>Description:</p>
-        <textarea class="description" placeholder="Description"></textarea>
-        <p>URL: <input type="url" class="site-url"></p>
     </body>
 </html>
+
