@@ -7,16 +7,15 @@ body {
     background-color: #2C3E50;
 }
 
-#extra-bg {
-    min-height: 90%;
-    max-width: 90%;
-    background-color: #16A085;
-}
-
 .content {
-    width: 100%;
-    height: 80%;
-    background-color: #8BC34A;
+    height: 100%;
+    width: 90%;
+    background-color: #8BC34A; /* for browsers that don't support linear gradiant */
+    background-image: linear-gradient(to bottom, #8BC34A 80%, #16A085 80%, #16A085 90%, #2C3E50 90%);
+    background-size: 100% 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
 }
 
 #preview {
@@ -24,7 +23,6 @@ body {
     width: 400px;
     background-color: white;
     box-shadow: 6px 6px 0 gray;
-    float: right;
     margin: 30px 40px;
 }
 
@@ -57,35 +55,53 @@ body {
     height: 150px;
 }
 
-/* This is here because when you add a margin to the media-input-box
-it lowers the entire background of the .content div behind the media-input-box
-and so the background is no longer stationed in the top left corner */
-#social-media-post {
-    padding: 70px 0 0 30px;
+.social-media-btns {
+    list-style: none;
+}
+
+.social-media-btns li {
+    float: left;
+    background-color: white;
+}
+
+.social-media-btns li a {
+    display: inline-block;
 }
 
 .media-input-box {
+    margin: 100px 0 0 30px;
     height: 350px;
     width: 500px;
     background-color: #4267B2;
-    border: 2px white solid;
 }
 
-#description-box {
-    position: relative;
-    border: 1px solid red;
+.block {
+    display: block;
 }
 
-#description-box p {
-    position: absolute;
-    top: 15px;
-    left: 30px;
-    padding: 0 5px;
+.test {
+    font-weight: bold;
     color: white;
+    padding: 15px 0 0 40px;
+    z-index: 2
 }
 
 .description {
-    margin: 35px 0 20px 20px;
-    box-shadow: 0 0 0 8px #07275b;
+    margin: 5px 0 20px 20px;
+    box-shadow: 0 0 0 6px #07275b;
     border-radius: 7px;
+    z-index: 1;
+}
+
+.media-input-box p {
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 950px) {
+    .content {
+        height: auto;
+        flex-flow: row wrap;
+        padding-bottom: 300px;
+    }
 }
