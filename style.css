@@ -55,31 +55,58 @@ body {
     height: 150px;
 }
 
+.media-input-form {
+    margin: 100px 0 0 30px;
+}
+
 .social-media-btns {
     list-style: none;
+    position: absolute;
+    top: -20px;
+    left: 0;
+}
+
+.tab {
+    display: inline-block;
+    border-radius: 5px 5px 0 0;
+    width: 80px;
+    height: 20px;
+    text-decoration: none;
+    color: white;
 }
 
 .social-media-btns li {
-    float: left;
-    background-color: white;
+    display: inline-block;
+    text-align: center;
 }
 
-.social-media-btns li a {
+/*
+.social-media-btns a {
     display: inline-block;
+    border-radius: 5px 5px 0 0;
+    width: 80px;
+    height: 21px;
+    text-decoration: none;
+    color: white;
+}
+*/
+.social-media-btns li a.current {
+    background-image: none;
 }
 
 .media-input-box {
-    margin: 100px 0 0 30px;
     height: 350px;
     width: 500px;
-    background-color: #4267B2;
+    background-color: #3B5998;
+    box-shadow: 0 2px 5px 1px black;
+    position: relative;
 }
 
 .block {
     display: block;
 }
 
-.test {
+.form-text {
     font-weight: bold;
     color: white;
     padding: 15px 0 0 40px;
@@ -88,14 +115,52 @@ body {
 
 .description {
     margin: 5px 0 20px 20px;
-    box-shadow: 0 0 0 6px #07275b;
-    border-radius: 7px;
-    z-index: 1;
+}
+
+.site-url {
+    margin-left: 7px;
+}
+
+.blue-outline {
+    box-shadow: 0 0 0 5px #07275b;
+    border-radius: 5px;
 }
 
 .media-input-box p {
     color: white;
     font-weight: bold;
+}
+
+#user-file {
+    margin-top: 35px;
+    margin-left: 40px;
+    color: white;
+    font-weight: bold;
+}
+
+button[type=submit] {
+
+}
+
+/* Classes just to hold each sites official colors */
+.fb {
+    background-color: #3B5998;
+    background-image: linear-gradient(to bottom, #3b5998 75%, black);
+}
+
+.twitter {
+    background-color: #4099FF;
+    background-image: linear-gradient(to bottom, #4099FF 75%, black);
+}
+
+.pinterest {
+    background-color: #C92228;
+    background-image: linear-gradient(to bottom, #C92228 75%, black);
+}
+
+.tumblr {
+    background-color: #35465C;
+    background-image: linear-gradient(to bottom, #35465C 75%, black);
 }
 
 @media (max-width: 950px) {

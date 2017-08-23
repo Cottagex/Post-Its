@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link href="reset.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="scripts/appPosts.js"></script>
+    </head>
+
+    <body class="container">
+        <div class="content">
+            <!-- social media post form -->
+            <form class="media-input-form">
+                <div class="media-input-box">
+                    <nav>
+                        <ul class="social-media-btns">
+                            <li><a id="fb-btn" class="current fb tab" href="#">Facebook</a></li>
+                            <li><a id="twitter-btn" class="twitter tab" href="#">Twitter</a></li>
+                            <li><a id="pinterest-btn" class="pinterest tab" href="#">Pinterest</a></li>
+                            <li><a id="tumblr-btn" class="tumblr tab" href="#">Tumblr</a></li>
+                        </ul>
+                    </nav>
+                    <label class="block form-text">Description</label>
+                    <textarea class="description blue-outline"></textarea>
+                    <p class="block form-text">URL: <input type="url" class="site-url blue-outline"></p>
+                    <input id="user-file" type="file" onchange="readImageURL(this);"/>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+
+            <!-- preview box -->
+            <div id="preview">
+                <img id="user-img" src="#" alt="your image">
+                <p id="user-description"></p>
+                <p id="preview-url"><p>
+            </div>
+        </div>
+    </body>
+</html>
+
