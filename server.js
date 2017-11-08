@@ -36,17 +36,11 @@ http.createServer((req, res) => {
             body += chunk.toString();
         }).on('end', () => {
             body = JSON.parse(body);
-            console.log(body);
-
-            // Decode the image from base64 to utf8 and then write it to a file
-            // to make sure we got the image
+            //console.log(body);
 
             // https://stackoverflow.com/questions/6182315/how-to-do-base64-encoding-in-node-js
-            // let img = new Buffer(body.image, 'base64').toString('binary');
-
             let img = Buffer.from(body.image, 'base64');
-            //console.log(img);
-            
+
             fs.writeFile(__dirname + "/junk/test.jpg", img, (err) => {
                 if (err) {
                     return console.log("Error writing to file: " + err);

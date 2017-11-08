@@ -40,8 +40,7 @@ function addNavClickListener() {
     let $navBtns = $('.social-media-btns').find('a');
 
     $navBtns.each(function() {
-        // find which social media tab was current when the page loaded
-        // (this is most like the fb tab)
+        // find which social media tab was current when the page loaded (this is most likely the fb tab)
         if ($(this).hasClass('current')) {
             PREV_SELECTED_TAB = this;
         }
@@ -52,6 +51,8 @@ function addNavClickListener() {
     });
 }
 
+// Changes the color of the whole input box to match that of the color of the tab
+// tab that was clicked. This is to simulate a 'current folder on top' effect
 function changeInputBoxColor(element) {
     let $id = $(element).attr('id');
     let $inputBox = $('.media-input-box');
@@ -104,7 +105,9 @@ function isTextEmpty($selector) {
 }
 
 // TODO 
-// Make sure that the file selected IS an image
+// Make sure that the file selected IS an image; this will basically replace what 
+// isImagePathEmpty() is doing (but way better checking) so we will need to update
+// that function once this one is implemented
 // https://stackoverflow.com/questions/29805909/jquery-how-to-check-if-uploaded-file-is-an-image-without-checking-extensions
 
 
@@ -137,8 +140,8 @@ function getImagePath() {
 // string we are sending over Ajax
 function getBase64Image(imgElem) {
     let canvas = document.createElement('canvas');
-    canvas.width = imgElem.clientWidth;
-    canvas.height = imgElem.clientHeight;
+    canvas.width = imgElem.naturalWidth;
+    canvas.height = imgElem.naturalHeight;
     let ctx = canvas.getContext('2d');
     ctx.drawImage(imgElem, 0, 0);
     let dataURL = canvas.toDataURL('image/png'); // returns the content of the current canvas as an image that you can use as a source for another canvas or an HTML element
@@ -148,13 +151,14 @@ function getBase64Image(imgElem) {
 function sendPost($selector) {
 
     $selector.on('click', function(e) {
-        //if ($('#user-img').attr('src') === '#');
+        e.preventDefault();
        
+        // We have to get the imgElem without jQuery because the drawImage call in 
+        // getBase64Image() does not work with jQuery objects
+        let imgElem = document.getElementById('user-img');
+        let image = getBase64Image(imgElem);
         let description = getDescriptionText();
         let userUrl = getUserUrl();
-
-        // TODO Get the actual image not the fake path
-        let imgElem = getImagePath();
         
         // TODO add better checking here. Maybe an error if it is empty
         /*
@@ -163,7 +167,6 @@ function sendPost($selector) {
         }
         */
 
-        let image = getBase64Image("C:\\Users\\Public\\Pictures\\Sample Pictures\\Koala.jpg");
         $.ajax({
             method: 'POST',
             url: '192.168.0.233',
